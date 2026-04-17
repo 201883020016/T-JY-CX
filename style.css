@@ -10,12 +10,11 @@
     --top-menu-height: 50px;
     --input-area-height: 60px;
     --pagination-height: 45px;
-    --message-font-size: 16px; /* 动态字号变量 */
+    --message-font-size: 16px;
 }
 
 body, html { margin: 0; padding: 0; height: 100%; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background-color: var(--bg-color); color: var(--text-color); overflow: hidden; }
 
-/* 顶部菜单栏与资料布局 */
 #top-menu { position: fixed; top: 0; left: 0; width: 100%; height: var(--top-menu-height); background-color: #f7f7f7; border-bottom: 1px solid #e0e0e0; box-sizing: border-box; display: flex; justify-content: space-between; align-items: center; padding: 0 15px; z-index: 5; }
 #feature-menu-btn { position: absolute; left: 50%; transform: translateX(-50%); font-weight: bold; font-size: 16px;}
 .menu-btn { background: none; border: none; font-size: 15px; color: var(--primary-color); cursor: pointer; padding: 10px; }
@@ -24,7 +23,6 @@ body, html { margin: 0; padding: 0; height: 100%; font-family: -apple-system, Bl
 .profile-area img { width: 34px; height: 34px; border-radius: 50%; object-fit: cover; border: 1px solid var(--border-color); background-color: white; flex-shrink: 0;}
 .profile-area span { font-weight: bold; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: 15px; }
 
-/* 功能抽屉面板 */
 .drawer-panel { position: fixed; bottom: 0; left: 0; width: 100%; height: 75%; background-color: #fff; border-top-left-radius: 16px; border-top-right-radius: 16px; box-shadow: 0 -5px 15px rgba(0,0,0,0.1); transform: translateY(100%); transition: transform 0.3s ease-in-out; display: flex; flex-direction: column; z-index: 10; }
 .drawer-panel.open { transform: translateY(0); }
 .drawer-header { display: flex; justify-content: space-between; align-items: center; padding: 15px; border-bottom: 1px solid #eee; flex-shrink: 0; }
@@ -34,7 +32,6 @@ body, html { margin: 0; padding: 0; height: 100%; font-family: -apple-system, Bl
 .menu-group h4 { margin: 0 0 10px 0; color: #888; font-size: 14px; border-bottom: 1px solid #eee; padding-bottom: 5px;}
 .drawer-item-btn { width: 100%; text-align: left; padding: 12px 15px; border: none; background: #fdfaf2; border-radius: 8px; font-size: 16px; color: var(--text-color); cursor: pointer; margin-bottom: 8px; box-shadow: 0 1px 2px rgba(0,0,0,0.05);}
 
-/* 设置页控件 */
 .avatar-edit-area { display: flex; flex-direction: column; align-items: center; gap: 10px; margin-bottom: 15px;}
 .avatar-edit-area img { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 1px solid #ddd; background-color: #eee;}
 #change-avatar-btn { padding: 6px 12px; border: 1px solid var(--primary-color); background: transparent; color: var(--primary-color); border-radius: 5px; cursor: pointer; }
@@ -45,7 +42,6 @@ body, html { margin: 0; padding: 0; height: 100%; font-family: -apple-system, Bl
 .setting-item input[type="range"] { -webkit-appearance: none; width: 100%; height: 6px; background: #ddd; border-radius: 3px; outline: none; margin: 15px 0;}
 .setting-item input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 22px; height: 22px; border-radius: 50%; background: var(--primary-color); cursor: pointer; }
 
-/* 消息与发送状态 */
 .message { font-size: var(--message-font-size); max-width: 85%; padding: 10px 15px; border-radius: 8px; line-height: 1.5; word-wrap: break-word; box-shadow: 0 1px 2px rgba(0,0,0,0.05); margin-bottom: 10px; }
 .msg-status { display: inline-block; font-size: 13px; margin-left: 6px; cursor: pointer; font-weight: bold;}
 .msg-status.sent { color: #9aa0a6; cursor: default; }
@@ -53,16 +49,17 @@ body, html { margin: 0; padding: 0; height: 100%; font-family: -apple-system, Bl
 .msg-status.refreshing { color: var(--primary-color); animation: spin 1s linear infinite; }
 @keyframes spin { 100% { transform: rotate(360deg); } }
 
-/* 原有布局保留 */
 #threads-container { padding-top: var(--top-menu-height); height: calc(100% - var(--pagination-height) - var(--input-area-height)); overflow-y: auto; box-sizing: content-box; padding-left: 15px; padding-right: 15px; padding-bottom: 15px; }
 #pagination-controls { position: fixed; bottom: var(--input-area-height); left: 0; width: 100%; height: var(--pagination-height); display: flex; justify-content: center; align-items: center; gap: 20px; background-color: var(--bg-color); border-top: 1px solid var(--border-color); padding: 0 15px; box-sizing: border-box; }
 #pagination-controls button { padding: 8px 16px; border: 1px solid var(--primary-color); background-color: transparent; color: var(--primary-color); border-radius: 5px; cursor: pointer; }
 #pagination-controls button:disabled { border-color: #ccc; color: #ccc; cursor: not-allowed; }
 #page-info { font-size: 14px; color: #888; }
-#input-area { position: fixed; bottom: 0; left: 0; width: 100%; height: var(--input-area-height); display: flex; align-items: center; padding: 10px; background-color: #f7f7f7; border-top: 1px solid #e0e0e0; box-sizing: border-box; gap: 10px; }
-#message-input { flex-grow: 1; height: 38px; border: 1px solid #ddd; border-radius: 5px; padding: 8px 12px; font-size: 16px; resize: none; line-height: 1.5; }
-#send-image-btn { flex-shrink: 0; height: 38px; min-width: 52px; border: 1px solid var(--primary-color); background-color: transparent; color: var(--primary-color); border-radius: 5px; cursor: pointer; padding: 0 12px; font-size: 14px; }
-#send-btn { flex-shrink: 0; height: 38px; width: 60px; border: none; background-color: var(--primary-color); color: white; border-radius: 5px; cursor: pointer; padding: 0 15px; }
+
+#input-area { position: fixed; bottom: 0; left: 0; width: 100%; height: var(--input-area-height); display: flex; align-items: center; padding: 10px; background-color: #f7f7f7; border-top: 1px solid #e0e0e0; box-sizing: border-box; gap: 8px; }
+#message-input { flex: 1 1 auto; min-width: 0; height: 38px; border: 1px solid #ddd; border-radius: 5px; padding: 8px 12px; font-size: 16px; resize: none; line-height: 1.5; box-sizing: border-box; font-family: inherit; }
+#send-image-btn { flex-shrink: 0; height: 38px; min-width: 60px; border: 1px solid var(--primary-color); background-color: transparent; color: var(--primary-color); border-radius: 5px; cursor: pointer; padding: 0 15px; font-size: 15px; white-space: nowrap; box-sizing: border-box; font-family: inherit; }
+#send-btn { flex-shrink: 0; height: 38px; min-width: 60px; border: none; background-color: var(--primary-color); color: white; border-radius: 5px; cursor: pointer; padding: 0 15px; font-size: 15px; white-space: nowrap; box-sizing: border-box; font-family: inherit; }
+
 .thread-container { background-color: var(--thread-bg-color); border: 1px solid var(--border-color); border-radius: 12px; margin-bottom: 20px; padding: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
 .message img { max-width: 100%; border-radius: 5px; display: block; }
 .message.user { background-color: var(--user-bubble-bg); align-self: flex-end; }
@@ -71,9 +68,11 @@ body, html { margin: 0; padding: 0; height: 100%; font-family: -apple-system, Bl
 .thread-main .message.user { align-self: stretch; max-width: 100%; }
 .thread-replies .message { margin-top: 10px; }
 .timestamp { font-size: 12px; color: #999; margin-top: 5px; display: block; width: 100%; text-align: right; }
+
 .follow-up-input-area { display: flex; gap: 8px; margin-top: 15px; padding-top: 15px; padding-right: 4px; border-top: 1px dashed var(--border-color); box-sizing: border-box; }
 .follow-up-input { flex-grow: 1; min-width: 0; border: 1px solid #ddd; border-radius: 5px; padding: 8px 12px; font-size: 14px; }
-.follow-up-btn { flex-shrink: 0; border: none; background-color: var(--primary-color); color: white; border-radius: 5px; cursor: pointer; padding: 0 12px; font-size: 13px; height: 34px; }
+.follow-up-btn { flex-shrink: 0; border: none; background-color: var(--primary-color); color: white; border-radius: 5px; cursor: pointer; padding: 0 12px; font-size: 13px; height: 34px; margin-right: 2px; white-space: nowrap; }
+
 #reply-panel { position: fixed; bottom: 0; left: 0; width: 100%; height: 80%; background-color: #fff; border-top-left-radius: 16px; border-top-right-radius: 16px; box-shadow: 0 -5px 15px rgba(0,0,0,0.1); transform: translateY(100%); transition: transform 0.3s ease-in-out; display: flex; flex-direction: column; z-index: 10; }
 #reply-panel.open { transform: translateY(0); }
 .panel-header { display: flex; justify-content: space-between; align-items: center; padding: 10px 15px; border-bottom: 1px solid #eee; flex-shrink: 0; }
